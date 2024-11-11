@@ -1,0 +1,21 @@
+#Aplicação FLASK rodando na porta 5000 , feita dentro de um ambiente virtual python ( python3 -m venv myvenv )     -  IA  -               
+import random
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+# Gera um PIN aleatório de 4 dígitos ao iniciar o servidor
+generated_pin = f"{random.randint(0, 9999):04d}"
+print(f"Generated PIN: {generated_pin}")  # Para visualização do PIN correto no>
+
+@app.route('/pin', methods=['GET'])
+def check_pin():
+    pin = request.args.get('pin')
+    if pin == generated_pin:
+        return jsonify({"message": "Success", "flag": "FLAG1234"})  # Retorna a>
+    else:
+        return jsonify({"message": "Error: Incorrect PIN"}), 400
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=5000)  # Porta padrão para rodar localmente
+
