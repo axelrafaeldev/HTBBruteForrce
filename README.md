@@ -1,4 +1,4 @@
-# HTBBruteForrce
+# HTBBruteForce
 Scripts usados no treino HTB
 
 Estudo 1
